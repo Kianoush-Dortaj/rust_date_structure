@@ -8,7 +8,7 @@ pub fn bubble_sort<T: PartialOrd + Debug> (v:&mut [T]) {
     for p in 0..v.len() {
 
         // Assume that the slice is already sorted.
-        let mut stored = true;
+        let mut sorted = true;
 
         // Loop through each pair of adjacent elements in the slice `v`, up to the 
         // position `v.len() - 1 - p` (which is where the largest element is expected to
@@ -16,17 +16,17 @@ pub fn bubble_sort<T: PartialOrd + Debug> (v:&mut [T]) {
         for i in 0..(v.len() -1 ) - p {
 
             // If the current element is greater than the next element, swap them.
-            // Also set the `stored` flag to `false` to indicate that the slice is not
+            // Also set the `sorted` flag to `false` to indicate that the slice is not
             // yet fully sorted.
             if v[i] > v[i+1] {
                 v.swap(i,i+1);
-                stored = false;
+                sorted = false;
             }
         }
 
-        // If the `stored` flag is still `true` (i.e., the slice is already sorted), 
+        // If the `sorted` flag is still `true` (i.e., the slice is already sorted), 
         // then exit the loop early.
-        if stored {
+        if sorted {
             return;
         }
     }
